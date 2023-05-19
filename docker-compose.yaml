@@ -1,0 +1,48 @@
+version: "3.9"
+services:
+  web:
+    container_name: bot-firiend
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    command: sh -c "crond && rm -f tmp/pids/server.pid && bundle install && rails db:create && rails db:migrate && rails s -b 0.0.0.0"
+    stdin_open: true
+    tty: true
+    restart: on-failure
+    volumes:
+      - ./web:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      RAILS_ENV: ${RAILS_ENV}
+      REDIS_URL_SIDEKIQ: ${REDIS_URL_SIDEKIQ}
+
+  db:
+    image: postgres:alpine3.18
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+  redis:
+    image: redis:alpine3.18
+    command: redis-server
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./tmp/redis:/data
+  sidekiq:
+    depends_on:
+      - 'db'
+      - 'redis'
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    command: bundle exec sidekiq
+    volumes:
+      - './web:/app'
+    environment:
+      RAILS_ENV: ${RAILS_ENV}
+      REDIS_URL_SIDEKIQ: ${REDIS_URL_SIDEKIQ}
