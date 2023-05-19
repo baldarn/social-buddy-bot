@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   web:
-    container_name: bot-firiend
+    container_name: bot-friend
     build:
       context: .
       dockerfile: docker/Dockerfile
