@@ -1,4 +1,4 @@
-# Bot Friend
+# Social Buddy Bot
 
 A friendly bot for communications system (like Slack, Teams, ...) that enhance the conviviality between workers all around the world!
 
