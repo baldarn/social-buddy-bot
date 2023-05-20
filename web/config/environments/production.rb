@@ -2,7 +2,7 @@
 
 require 'active_support/core_ext/integer/time'
 
-Rails.application.config.hosts << 'social-buddy-bot.42monkeys.eu'
+Rails.application.config.hosts << ENV.fetch('HOST')
 Rails.application.config.hosts << 'localhost' # to try locally ;)
 
 Rails.application.configure do
@@ -48,7 +48,7 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
   # config.action_cable.url = "wss://example.com/cable"
-  config.action_cable.allowed_request_origins = ['daruma.42monkeys.eu']
+  config.action_cable.allowed_request_origins = [ENV.fetch('HOST')]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -72,7 +72,7 @@ Rails.application.configure do
   # config.action_mailer.smtp_settings = Rails.application.credentials[:smtp_settings]
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'social-buddy-bot.42monkeys.eu' }
+  config.action_mailer.default_url_options = { host: ENV.fetch('HOST') }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

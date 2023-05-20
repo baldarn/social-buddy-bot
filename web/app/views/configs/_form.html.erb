@@ -1,0 +1,37 @@
+<%= form_with(model: config) do |form| %>
+  <% if config.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(config.errors.count, "error") %> prohibited this config from being saved:</h2>
+
+      <ul>
+        <% config.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :slack_api_key, style: "display: block" %>
+    <%= form.text_field :slack_api_key %>
+  </div>
+
+  <div>
+    <%= form.label :discord_api_key, style: "display: block" %>
+    <%= form.text_field :discord_api_key %>
+  </div>
+
+  <div>
+    <%= form.label :slack_relax_channel, style: "display: block" %>
+    <%= form.text_field :slack_relax_channel %>
+  </div>
+
+  <div>
+    <%= form.label :discord_relax_channel, style: "display: block" %>
+    <%= form.text_field :discord_relax_channel %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

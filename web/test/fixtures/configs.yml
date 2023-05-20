@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  slack_api_key: MyString
+  discord_api_key: MyString
+  slack_relax_channel: MyString
+  discord_relax_channel: MyString
+
+two:
+  slack_api_key: MyString
+  discord_api_key: MyString
+  slack_relax_channel: MyString
+  discord_relax_channel: MyString

@@ -19,6 +19,7 @@ services:
     environment:
       RAILS_ENV: ${RAILS_ENV}
       REDIS_URL_SIDEKIQ: ${REDIS_URL_SIDEKIQ}
+      HOST: ${HOST}
 
   db:
     image: postgres:alpine3.18
@@ -31,16 +32,16 @@ services:
     command: redis-server
     volumes:
       - ./tmp/redis:/data
-  sidekiq:
-    depends_on:
-      - 'db'
-      - 'redis'
-    build:
-      context: .
-      dockerfile: docker/Dockerfile
-    command: bundle exec sidekiq
-    volumes:
-      - './web:/app'
-    environment:
-      RAILS_ENV: ${RAILS_ENV}
-      REDIS_URL_SIDEKIQ: ${REDIS_URL_SIDEKIQ}
+  # sidekiq:
+  #   depends_on:
+  #     - 'db'
+  #     - 'redis'
+  #   build:
+  #     context: .
+  #     dockerfile: docker/Dockerfile
+  #   command: bundle exec sidekiq
+  #   volumes:
+  #     - './web:/app'
+  #   environment:
+  #     RAILS_ENV: ${RAILS_ENV}
+  #     REDIS_URL_SIDEKIQ: ${REDIS_URL_SIDEKIQ}
