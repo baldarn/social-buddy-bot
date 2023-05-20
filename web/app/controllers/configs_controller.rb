@@ -31,6 +31,7 @@ class ConfigsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def config_params
-    params.require(:config).permit(:slack_api_key, :discord_api_key, :slack_relax_channel, :discord_relax_channel)
+    params.require(:config).permit(:slack_api_key, :discord_api_key, :slack_relax_channel, :discord_relax_channel,
+                                   :open_ai_secret)
   end
 end

@@ -22,6 +22,6 @@
 # Learn more: http://github.com/javan/whenever
 set :job_template, "sh -l -c ':job'"
 
-every 1.day, at: '11:00 am' do
+every 1.day, at: '00:00 am' do
   rake 'bot:generate_reminders'
 end

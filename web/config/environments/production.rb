@@ -2,7 +2,7 @@
 
 require 'active_support/core_ext/integer/time'
 
-Rails.application.config.hosts << ENV.fetch('HOST')
+Rails.application.config.hosts << ENV.fetch('HOST', 'localhost')
 Rails.application.config.hosts << 'localhost' # to try locally ;)
 
 Rails.application.configure do

@@ -7,7 +7,7 @@ deploy:
 	ssh -A $(USER_AND_HOST) "mv master.key projects/social-buddy-bot/web/config; exit"
 	ssh -A $(USER_AND_HOST) "cd projects/social-buddy-bot; git pull; exit"
 	ssh $(USER_AND_HOST) "cd projects/social-buddy-bot; docker compose --env-file .env.production up --build -d; exit"
-	# ssh $(USER_AND_HOST) "cd projects/social-buddy-bot; docker exec social-buddy-bot whenever --update-crontab; exit"
+	ssh $(USER_AND_HOST) "cd projects/social-buddy-bot; docker exec social-buddy-bot whenever --update-crontab; exit"
 
 dev:
 	docker compose up -d --build

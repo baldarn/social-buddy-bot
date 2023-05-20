@@ -4,18 +4,11 @@ namespace :bot do
   desc 'Generate reminders'
   task generate_reminders: [:environment] do
     User.all.each do |user|
-      config = user.config
-      if config.slack_api_key.present? && config.slack_relax_channel.present?
-        puts "Generating slack reminders for user #{user.email}"
-        slack_bot = SlackBot.new(config.slack_api_key, config.slack_relax_channel)
-        slack_bot.propose_coffee
-      end
-
-      next unless config.discord_api_key.present? && config.discord_relax_channel.present?
-
-      puts "Generating discord reminders for user #{user.email}"
-      discord_bot = DiscordBot.new(config.discord_api_key, config.discord_relax_channel)
-      discord_bot.propose_coffee
+      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 10 })).perform_later(user.config, :coffee)
+      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 15 })).perform_later(user.config, :coffee)
+      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 14 })).perform_later(user.config, :lunch)
+      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 13, minutes: 45 })).perform_later(user.config, :walk)
+      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 17, minutes: 30 })).perform_later(user.config, :game)
     end
   end
 end
