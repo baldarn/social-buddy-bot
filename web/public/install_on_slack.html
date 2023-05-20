@@ -3,17 +3,22 @@
   <head>
     <title>Bot Friend</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <div>
+      <h1>Install on Slack</h1>
+
+      <ul>
+        <li>
+          Go to your <a href="https://api.slack.com/apps/">app editor on Slack</a>
+        </li>
+        <li>
+          Create an app called <strong>Friend Bot</strong>
+        </li>
+      </ul>
+    </div>
   </body>
 </html>

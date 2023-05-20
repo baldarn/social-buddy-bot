@@ -1,6 +1,7 @@
 # Bot Friend
 
-A friendly bot for communication system that enhance the conviviality between workers all around the world!
+A friendly bot for communications system (like Slack, Teams, ...) that enhance the conviviality between workers all around the world!
+
 
 ## Slack installation
 

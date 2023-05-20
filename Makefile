@@ -1,7 +1,7 @@
-# deploy:
-# 	ssh -A baldarn@cervellone.lan "cd projects/bot-friend; git pull; exit"
-# 	ssh baldarn@cervellone.lan "cd projects/bot-friend; docker compose --env-file .env.production up --build -d; exit"
-# 	ssh baldarn@cervellone.lan "cd projects/bot-friend; docker exec daruma whenever --update-crontab; exit"
+deploy:
+	ssh -A baldarn@cervellone.lan "cd projects/bot-friend; git pull; exit"
+	ssh baldarn@cervellone.lan "cd projects/bot-friend; docker compose --env-file .env.production up --build -d; exit"
+	# ssh baldarn@cervellone.lan "cd projects/bot-friend; docker exec daruma whenever --update-crontab; exit"
 
 dev:
 	docker compose up -d --build
