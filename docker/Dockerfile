@@ -4,6 +4,7 @@ RUN apk update && apk add --no-cache build-base nodejs postgresql-dev tzdata
 
 RUN mkdir /app
 WORKDIR /app
+COPY .env .
 COPY web .
 
 COPY web/Gemfile web/Gemfile.lock ./
