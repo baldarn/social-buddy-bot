@@ -24,5 +24,5 @@ production:
   adapter: postgresql
   database: social_buddy_bot
   host: db
-  username: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  password: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch("DB_USER") %>
+  password: <%= ENV.fetch("DB_PASSWORD") %>
