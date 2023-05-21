@@ -2,7 +2,6 @@
 
 module Bots
   class Discord < Base
-
     def initialize(token:, social_channel:, open_ai_secret: nil)
       super(token:, social_channel:, open_ai_secret:)
       @client = Discordrb::Bot.new(token:)

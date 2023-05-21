@@ -4,11 +4,11 @@ module Bots
   class Base
     attr_reader :client, :social_channel, :open_ai
 
-    EVENTS = [:coffee, :lunch, :walk, :game]
+    EVENTS = %i[coffee lunch walk game].freeze
 
     def initialize(token:, social_channel:, open_ai_secret: nil)
-      raise StandardError.new('No token provided') unless token
-      raise StandardError.new('No social channel provided') unless social_channel
+      raise StandardError, 'No token provided' unless token
+      raise StandardError, 'No social channel provided' unless social_channel
 
       @social_channel = social_channel
       @open_ai = OpenAi.new(open_ai_secret, 'italian') if open_ai_secret
