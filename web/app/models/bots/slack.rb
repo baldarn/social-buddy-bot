@@ -6,17 +6,36 @@ module Bots
 
     def initialize(token:, social_channel:, open_ai_secret: nil)
       super(token:, social_channel:, open_ai_secret:)
-      @client = Slack::Web::Client.new(token:)
+      @client = ::Slack::Web::Client.new(token:)
+    end
+
+    def join_social_channel
+      @client.conversations_join(channel: @social_channel)
     end
 
     def users
-      client.users_list[:members].filter { |m| !m['is_bot'] && m['name'] != 'Slackbot' }
+      @client.users_list[:members].filter { |m| !m['is_bot'] && m['name'] != 'Slackbot' }
+    end
+
+    def today_sent_messages
+      @client
+        .conversations_history(
+          channel: @social_channel,
+          include_all_metadata: true,
+          oldest: Date.today.to_time.to_i
+        )
+        .messages
+        .select { |m| m.subtype.nil? }
+    end
+
+    def send_message(user)
+      @client.chat_postMessage(channel: user, text:, as_user: true)
     end
 
     def propose_event(event:)
       text = get_text(event:)
       text = integrate_text(event:, text:)
-      client.chat_postMessage(channel: social_channel, text:, as_user: true)
+      @client.chat_postMessage(channel: social_channel, text:, as_user: true)
     end
 
     def integrate_text(event:, text:)

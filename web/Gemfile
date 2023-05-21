@@ -48,7 +48,13 @@ gem 'whenever', require: false
 
 gem 'discordrb'
 
+gem 'pg'
+
 gem 'slack-ruby-client'
+
+gem 'sidekiq', '~> 7.1'
+
+gem 'ruby-openai'
 
 gem 'devise', '~> 4.8', '>= 4.8.1'
 
@@ -80,11 +86,3 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
-
-group :production do
-  gem 'pg'
-end
-
-gem 'sidekiq', '~> 7.1'
-
-gem 'ruby-openai'

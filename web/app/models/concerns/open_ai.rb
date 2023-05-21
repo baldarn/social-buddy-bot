@@ -24,15 +24,19 @@ class OpenAi
   end
 
   def prompt(event)
+    ret = "write a motivational sentence in #{@language}
+      of maximum 40 words to make my collegues"
     case event
     when :coffee
-      "write a motivational sentence in #{@language} of maximum 30 words to make my collegues take a coffee"
+      ret += ' take a coffee.'
     when :lunch
-      "write a motivational sentence in #{@language} of maximum 30 words to make my collegues have lunch together"
+      ret += ' have lunch together.'
     when :walk
-      "write a motivational sentence in #{@language} of maximum 30 words to make my collegues take a walk"
+      ret += ' take a walk'
     when :game
-      "write a motivational sentence in #{@language} of maximum 30 words to make my collegues to make a online game"
+      ret += ' play an online game'
     end
+    ret += 'no traslation and no words count'
+    ret
   end
 end
