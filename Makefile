@@ -4,7 +4,9 @@ deploy:
 	ssh -A $(USER_AND_HOST) "mkdir -p projects; exit"
 	ssh -A $(USER_AND_HOST) "cd projects; ([ ! -d 'social-buddy-bot' ] && git clone git@github.com:42-monkeys/social-buddy-bot.git) || true; exit"
 	scp web/config/master.key $(USER_AND_HOST):
+	scp .env.production $(USER_AND_HOST):
 	ssh -A $(USER_AND_HOST) "mv master.key projects/social-buddy-bot/web/config; exit"
+	ssh -A $(USER_AND_HOST) "mv .env.production projects/social-buddy-bot; exit"
 	ssh -A $(USER_AND_HOST) "cd projects/social-buddy-bot; git pull; exit"
 	ssh $(USER_AND_HOST) "cd projects/social-buddy-bot; docker compose --env-file .env.production up --build -d; exit"
 	ssh $(USER_AND_HOST) "cd projects/social-buddy-bot; docker exec social-buddy-bot whenever --update-crontab; exit"

@@ -20,7 +20,6 @@ services:
       RAILS_ENV: ${RAILS_ENV}
       REDIS_URL_SIDEKIQ: ${REDIS_URL_SIDEKIQ}
       HOST: ${HOST}
-      DB_DATABASE: ${DB_DATABASE}
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
 
