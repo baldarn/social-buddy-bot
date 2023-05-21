@@ -5,7 +5,6 @@ RUN apk update && apk add --no-cache build-base nodejs postgresql-dev tzdata
 RUN mkdir /app
 WORKDIR /app
 COPY web .
-COPY .env .
 
 COPY web/Gemfile web/Gemfile.lock ./
 RUN gem install bundler --no-document
