@@ -6,20 +6,8 @@ class OpenAi
     @language = language
   end
 
-  def propose_coffee_ai
-    ask_open_ai(prompt_coffee)
-  end
-
-  def propose_lunch_ai
-    ask_open_ai(prompt_coffee)
-  end
-
-  def propose_walk_ai
-    ask_open_ai(prompt_coffee)
-  end
-
-  def propose_game_ai
-    ask_open_ai(prompt_coffee)
+  def propose_message(event:)
+    ask_open_ai(prompt(event))
   end
 
   private
@@ -35,19 +23,16 @@ class OpenAi
     response.dig('choices', 0, 'message', 'content').gsub('`', '')
   end
 
-  def prompt_coffee
-    "write a motivational sentence in #{@language} of maximum 30 words to make my collegues take a coffee"
-  end
-
-  def prompt_lunch
-    "write a motivational sentence in #{@language} of maximum 30 words to make my collegues have lunch together"
-  end
-
-  def prompt_walk
-    "write a motivational sentence in #{@language} of maximum 30 words to make my collegues take a walk"
-  end
-
-  def prompt_game
-    "write a motivational sentence in #{@language} of maximum 30 words to make my collegues to make a online game"
+  def prompt(event)
+    case event
+    when :coffee
+      "write a motivational sentence in #{@language} of maximum 30 words to make my collegues take a coffee"
+    when :lunch
+      "write a motivational sentence in #{@language} of maximum 30 words to make my collegues have lunch together"
+    when :walk
+      "write a motivational sentence in #{@language} of maximum 30 words to make my collegues take a walk"
+    when :game
+      "write a motivational sentence in #{@language} of maximum 30 words to make my collegues to make a online game"
+    end
   end
 end

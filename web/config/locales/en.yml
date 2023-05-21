@@ -30,7 +30,8 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  propose_coffee: "What about a nice coffee!! Come and join with your collegues!"
-  propose_game: "Have a funny break! Try this game: "
-  take_a_walk: "How long from the last walk you had? Take a walk together!"
-  lunch_together: "Why eat alone? Who want to share the virtual meal?"
+  event_messages:
+    coffee: "What about a nice coffee? Come and join with your colleagues!"
+    game: "Have a funny break! Try this game: "
+    walk: "How long from the last walk you had? Take a walk together!"
+    lunch: "Why eat alone? Who wants to share a virtual meal?"
