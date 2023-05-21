@@ -21,5 +21,8 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  database: social_buddy_bot
+  host: db
+  username: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  password: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
