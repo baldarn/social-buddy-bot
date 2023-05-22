@@ -30,7 +30,10 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  propose_coffee: "Hey, che ne pensi di un buon caffè? Vieni ed unisciti ai tuoi colleghi!"
-  propose_game: "Fai una pausa divertente! Prova questo gioco:\n"
-  take_a_walk: "Da quanto non prendete una boccata d'aria? Fatevi una passeggiata insieme!"
-  lunch_together: "Perchè mangiare da solo? Chi vuole unirsi al pranzo virtuale?"
+  event_messages:
+    coffee: "Hey, che ne pensi di un buon caffè? Vieni ed unisciti ai tuoi colleghi!"
+    game: "Fai una pausa divertente! Prova questo gioco:\n"
+    walk: "Da quanto non prendete una boccata d'aria? Fatevi una passeggiata insieme!"
+    lunch: "Perchè mangiare da solo? Chi vuole unirsi al pranzo virtuale?"
+    least_active: "Ciao! Va tutto bene? Non ti vedo spesso nel canale del relax. Vuoi venire alla prossima attività?"
+    most_active: "Ciao! Sei sempre lì nel canale del relax! Perché non fai il mio lavoro e chiedi ai tuoi colleghi qualche attività?"

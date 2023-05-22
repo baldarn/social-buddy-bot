@@ -41,4 +41,27 @@ namespace :bot do
       # Discord TODO:
     end
   end
+
+  desc 'Check up for lowest interacting people'
+  task least_interacting: [:environment] do
+    User.all.each do |user|
+      # Slack
+      least_active = user.chat_users.sort_by(&:count_last_week_interactions).reverse
+      least_active.first(3).each do |u|
+        user.slack_bot.propose_event(user: u.platform_id, event: :least_active)
+      end
+    end
+  end
+
+  desc 'Encourage most interacting people to be engaging'
+  task most_interacting: [:environment] do
+    User.all.each do |user|
+      # Slack
+      most_active = user.chat_users.sort_by(&:count_last_week_interactions).reverse
+      most_active.first(3).each do |u|
+        user.slack_bot.propose_event(user: u.platform_id, event: :most_active)
+      end
+    end
+  end
+
 end

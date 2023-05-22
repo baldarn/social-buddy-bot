@@ -28,14 +28,10 @@ module Bots
         .select { |m| m.subtype.nil? }
     end
 
-    def send_message(user)
-      @client.chat_postMessage(channel: user, text:, as_user: true)
-    end
-
-    def propose_event(event:)
+    def propose_event(user:, event:)
       text = get_text(event:)
       text = integrate_text(event:, text:)
-      @client.chat_postMessage(channel: social_channel, text:, as_user: true)
+      @client.chat_postMessage(channel: user || social_channel, text:, as_user: true)
     end
 
     def integrate_text(event:, text:)
