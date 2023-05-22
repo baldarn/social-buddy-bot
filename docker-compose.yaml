@@ -45,3 +45,4 @@ services:
     environment:
       RAILS_ENV: ${RAILS_ENV}
       REDIS_URL_SIDEKIQ: ${REDIS_URL_SIDEKIQ}
+      HOST: ${HOST}
