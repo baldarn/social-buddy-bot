@@ -28,6 +28,8 @@
 /tmp/storage/*
 !/tmp/storage/
 !/tmp/storage/.keep
+/.idea
+.DS_Store
 
 /public/assets
 
