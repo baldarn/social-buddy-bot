@@ -22,6 +22,15 @@
 # Learn more: http://github.com/javan/whenever
 set :job_template, "sh -l -c ':job'"
 
-every 1.day, at: '00:00 am' do
+every 1.day, at: '00:00' do
   rake 'bot:generate_reminders'
+end
+
+every 1.day, at: '20:00' do
+  rake 'bot:count_interactions'
+end
+
+every :wednesday, at: '10:00' do
+  rake 'bot:least_interacting'
+  rake 'bot:most_interacting'
 end

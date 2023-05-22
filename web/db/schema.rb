@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_20_190349) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_21_212910) do
+  create_table "chat_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "chat_type"
+    t.string "platform_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "display_name"
+    t.index ["chat_type", "platform_id"], name: "index_chat_users_on_chat_type_and_platform_id", unique: true
+    t.index ["user_id"], name: "index_chat_users_on_user_id"
+  end
+
   create_table "configs", force: :cascade do |t|
     t.integer "user_id"
     t.string "slack_api_key"
@@ -21,6 +33,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_190349) do
     t.datetime "updated_at", null: false
     t.string "open_ai_secret"
     t.index ["user_id"], name: "index_configs_on_user_id"
+  end
+
+  create_table "interactions", force: :cascade do |t|
+    t.integer "chat_user_id"
+    t.integer "chat_type"
+    t.string "platform_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_type", "platform_id"], name: "index_interactions_on_chat_type_and_platform_id", unique: true
+    t.index ["chat_user_id"], name: "index_interactions_on_chat_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -35,5 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_190349) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "chat_users", "users"
   add_foreign_key "configs", "users"
+  add_foreign_key "interactions", "chat_users"
 end
