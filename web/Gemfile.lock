@@ -170,6 +170,7 @@ GEM
     opus-ruby (1.0.1)
       ffi
     orm_adapter (0.5.0)
+    pg (1.5.3)
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -295,6 +296,7 @@ DEPENDENCIES
   discordrb
   importmap-rails
   jbuilder
+  pg
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
   redis (~> 4.0)

@@ -2,7 +2,6 @@
 
 A friendly bot for communications system (like Slack, Teams, ...) that enhance the conviviality between workers all around the world!
 
-
 ## Slack installation
 
 You need to add the following scopes to the bot:
@@ -11,6 +10,8 @@ You need to add the following scopes to the bot:
 channels:join
 reactions:read
 users:read
+chat:write
+im:write
 ```
 
 ## Discord installation
