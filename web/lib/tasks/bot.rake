@@ -63,5 +63,4 @@ namespace :bot do
       end
     end
   end
-
 end
