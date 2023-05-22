@@ -1,18 +1,6 @@
 # frozen_string_literal: true
 
 namespace :bot do
-  desc 'Generate reminders'
-  task generate_reminders: [:environment] do
-    User.all.each do |user|
-      # TODO: timezoned
-      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 8 })).perform_later(user, :coffee)
-      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 13 })).perform_later(user, :coffee)
-      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 12 })).perform_later(user, :lunch)
-      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 12, min: 45 })).perform_later(user, :walk)
-      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 15, min: 30 })).perform_later(user, :game)
-    end
-  end
-
   desc 'Count chat users interactions'
   task count_interactions: [:environment] do
     User.all.each do |user|
@@ -49,7 +37,7 @@ namespace :bot do
       # Slack
       least_active = user.chat_users.sort_by(&:count_last_week_interactions).reverse
       least_active.first(3).each do |u|
-        user.slack_bot.propose_event(user: u.platform_id, event: :least_active)
+        user.slack_bot.propose_event(channel: u.platform_id, event: :least_active)
       end
     end
   end
@@ -60,7 +48,7 @@ namespace :bot do
       # Slack
       most_active = user.chat_users.sort_by(&:count_last_week_interactions).reverse
       most_active.first(3).each do |u|
-        user.slack_bot.propose_event(user: u.platform_id, event: :most_active)
+        user.slack_bot.propose_event(channel: u.platform_id, event: :most_active)
       end
     end
   end

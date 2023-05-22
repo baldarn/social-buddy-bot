@@ -24,4 +24,29 @@
     <%= config.open_ai_secret %>
   </p>
 
+  <p>
+    <strong>Event: coffee break 1</strong>
+    <%= config.event_coffee_1_enabled? ? "ENABLED, at #{config.event_coffee_1_time}" : 'DISABLED' %>
+  </p>
+
+  <p>
+    <strong>Event: coffee break 2</strong>
+    <%= config.event_coffee_2_enabled? ? "ENABLED, at #{config.event_coffee_2_time}" : 'DISABLED' %>
+  </p>
+
+  <p>
+    <strong>Event: lunch together</strong>
+    <%= config.event_lunch_enabled? ? "ENABLED, at #{config.event_lunch_time}" : 'DISABLED' %>
+  </p>
+
+  <p>
+    <strong>Event: take a walk</strong>
+    <%= config.event_walk_enabled? ? "ENABLED, at #{config.event_walk_time}" : 'DISABLED' %>
+  </p>
+
+  <p>
+    <strong>Event: play vidya</strong>
+    <%= config.event_game_enabled? ? "ENABLED, at #{config.event_game_time}" : 'DISABLED' %>
+  </p>
+
 </div>
