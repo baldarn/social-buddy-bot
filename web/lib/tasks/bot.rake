@@ -8,8 +8,8 @@ namespace :bot do
       SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 8 })).perform_later(user, :coffee)
       SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 13 })).perform_later(user, :coffee)
       SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 12 })).perform_later(user, :lunch)
-      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 12, minutes: 45 })).perform_later(user, :walk)
-      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 15, minutes: 30 })).perform_later(user, :game)
+      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 12, min: 45 })).perform_later(user, :walk)
+      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 15, min: 30 })).perform_later(user, :game)
     end
   end
 
