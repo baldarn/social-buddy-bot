@@ -9,7 +9,7 @@
       </p>
     </div>
   </section>
-  
+
   <div class="content">
 
     <%= form_with(model: config) do |form| %>
@@ -74,7 +74,7 @@
           <label class="checkbox">
             <%= form.check_box :event_coffee_1_enabled %> Morning coffee break
           </label>
-          <%= form.time_field :event_coffee_1_time, value: "%H:%M" %>
+          <%= form.time_field :event_coffee_1_time %>
         </div>
       </div>
 
@@ -83,7 +83,7 @@
           <label class="checkbox">
             <%= form.check_box :event_coffee_2_enabled %> Afternoon coffee break
           </label>
-          <%= form.time_field :event_coffee_2_time, value: "%H:%M" %>
+          <%= form.time_field :event_coffee_2_time %>
         </div>
       </div>
 
@@ -92,7 +92,7 @@
           <label class="checkbox">
             <%= form.check_box :event_lunch_enabled %> Lunch
           </label>
-          <%= form.time_field :event_lunch_time, value: "%H:%M" %>
+          <%= form.time_field :event_lunch_time %>
         </div>
       </div>
 
@@ -101,7 +101,7 @@
           <label class="checkbox">
             <%= form.check_box :event_walk_enabled %> Take a walk
           </label>
-          <%= form.time_field :event_walk_time, value: "%H:%M" %>
+          <%= form.time_field :event_walk_time %>
         </div>
       </div>
 
@@ -110,7 +110,7 @@
           <label class="checkbox">
             <%= form.check_box :event_game_enabled %> Play some games
           </label>
-          <%= form.time_field :event_game_time, value: "%H:%M" %>
+          <%= form.time_field :event_game_time %>
         </div>
       </div>
 
