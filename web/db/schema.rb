@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_21_212910) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_22_194735) do
   create_table "chat_users", force: :cascade do |t|
     t.integer "user_id"
     t.integer "chat_type"
@@ -32,6 +32,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_21_212910) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "open_ai_secret"
+    t.boolean "event_coffee_1_enabled", default: true
+    t.boolean "event_coffee_2_enabled", default: true
+    t.boolean "event_lunch_enabled", default: true
+    t.boolean "event_walk_enabled", default: true
+    t.boolean "event_game_enabled", default: true
+    t.integer "event_coffee_1_time", default: 1000
+    t.integer "event_coffee_2_time", default: 1500
+    t.integer "event_lunch_time", default: 1230
+    t.integer "event_walk_time", default: 1600
+    t.integer "event_game_time", default: 1730
     t.index ["user_id"], name: "index_configs_on_user_id"
   end
 

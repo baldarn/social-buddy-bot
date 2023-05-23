@@ -37,6 +37,56 @@
   </div>
 
   <div>
+    <%= form.label :event_coffee_1_enabled, style: "display: block" %>
+    <%= form.check_box :event_coffee_1_enabled %>
+  </div>
+
+  <div>
+    <%= form.label :event_coffee_1_time, style: "display: block" %>
+    <%= form.text_field :event_coffee_1_time %>
+  </div>
+
+  <div>
+    <%= form.label :event_coffee_2_enabled, style: "display: block" %>
+    <%= form.check_box :event_coffee_2_enabled %>
+  </div>
+
+  <div>
+    <%= form.label :event_coffee_2_time, style: "display: block" %>
+    <%= form.text_field :event_coffee_2_time %>
+  </div>
+
+  <div>
+    <%= form.label :event_lunch_enabled, style: "display: block" %>
+    <%= form.check_box :event_lunch_enabled %>
+  </div>
+
+  <div>
+    <%= form.label :event_lunch_time, style: "display: block" %>
+    <%= form.text_field :event_lunch_time %>
+  </div>
+
+  <div>
+    <%= form.label :event_walk_enabled, style: "display: block" %>
+    <%= form.check_box :event_walk_enabled %>
+  </div>
+
+  <div>
+    <%= form.label :event_walk_time, style: "display: block" %>
+    <%= form.text_field :event_walk_time %>
+  </div>
+
+  <div>
+    <%= form.label :event_game_enabled, style: "display: block" %>
+    <%= form.check_box :event_game_enabled %>
+  </div>
+
+  <div>
+    <%= form.label :event_game_time, style: "display: block" %>
+    <%= form.text_field :event_game_time %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
