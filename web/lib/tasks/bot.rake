@@ -6,16 +6,36 @@ namespace :bot do
     User.all.each do |user|
       # TODO: timezoned
       config = user.config
-      config.event_coffee_1_enabled && SendRemindersJob.set(wait_until: config.event_coffee_1_time)
-                                                       .perform_later(user, :coffee)
-      config.event_coffee_2_enabled && SendRemindersJob.set(wait_until: config.event_coffee_2_time)
-                                                       .perform_later(user, :coffee)
-      config.event_lunch_enabled && SendRemindersJob.set(wait_until: config.event_lunch_time)
-                                                    .perform_later(user, :lunch)
-      config.event_walk_enabled && SendRemindersJob.set(wait_until: config.event_walk_time)
-                                                   .perform_later(user, :walk)
-      config.event_game_enabled && SendRemindersJob.set(wait_until: config.event_game_time)
-                                                   .perform_later(user, :game)
+      config.event_coffee_1_enabled && SendRemindersJob.set(
+        wait_until: DateTime.now.change({
+                                          hour: config.event_coffee_1_enabled.hour,
+                                          min: config.event_coffee_1_enabled.min
+                                        })
+      ).perform_later(user, :coffee)
+      config.event_coffee_2_enabled && SendRemindersJob.set(
+        wait_until: DateTime.now.change({
+                                          hour: config.config.event_coffee_2_enabled.hour,
+                                          min: config.config.event_coffee_2_enabled.min
+                                        })
+      ).perform_later(user, :coffee)
+      config.event_lunch_enabled && SendRemindersJob.set(
+        wait_until: DateTime.now.change({
+                                          hour: config.config.event_lunch_enabled.hour,
+                                          min: config.config.event_lunch_enabled.min
+                                        })
+      ).perform_later(user, :lunch)
+      config.event_walk_enabled && SendRemindersJob.set(
+        wait_until: DateTime.now.change({
+                                          hour: config.event_walk_enabled.hour,
+                                          min: config.event_walk_enabled.min
+                                        })
+      ).perform_later(user, :walk)
+      config.event_game_enabled && SendRemindersJob.set(
+        wait_until: DateTime.now.change({
+                                          hour: config.event_game_enabled.hour,
+                                          min: config.event_game_enabled.min
+                                        })
+      ).perform_later(user, :game)
     end
   end
 

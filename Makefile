@@ -2,7 +2,6 @@ USER_AND_HOST = baldarn@cervellone.lan
 # USER_AND_HOST = ubuntu@54.155.243.223
 
 deploy:
-	ssh $(USER_AND_HOST) "sudo apt update && sudo apt install -y docker.io docker-compose; exit"
 	ssh $(USER_AND_HOST) "mkdir -p projects; exit"
 	ssh $(USER_AND_HOST) "ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts"
 	ssh -A $(USER_AND_HOST) "cd projects; ([ ! -d 'social-buddy-bot' ] && git clone git@github.com:42-monkeys/social-buddy-bot.git) || true; exit"
