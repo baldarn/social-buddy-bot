@@ -5,11 +5,11 @@ namespace :bot do
   task generate_reminders: [:environment] do
     User.all.each do |user|
       # TODO: timezoned
-      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 7 })).perform_later(user, :coffee)
-      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 12 })).perform_later(user, :coffee)
-      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 11 })).perform_later(user, :lunch)
-      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 11, min: 45 })).perform_later(user, :walk)
-      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 14, min: 30 })).perform_later(user, :game)
+      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 8 })).perform_later(user, :coffee)
+      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 13 })).perform_later(user, :coffee)
+      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 12 })).perform_later(user, :lunch)
+      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 12, min: 45 })).perform_later(user, :walk)
+      SendRemindersJob.set(wait_until: DateTime.now.change({ hour: 15, min: 30 })).perform_later(user, :game)
     end
   end
 
