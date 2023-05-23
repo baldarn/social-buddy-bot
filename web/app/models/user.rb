@@ -31,7 +31,6 @@ class User < ApplicationRecord
 
   def after_create_tasks
     generate_config
-    schedule_job
   end
 
   def generate_config
