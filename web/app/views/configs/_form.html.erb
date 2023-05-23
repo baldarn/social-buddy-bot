@@ -1,97 +1,127 @@
-<%= form_with(model: config) do |form| %>
-  <% if config.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(config.errors.count, "error") %> prohibited this config from being saved:</h2>
-
-      <ul>
-        <% config.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<div class="container">
+  <section class="hero">
+    <div class="hero-body">
+      <p class="title">
+        Edit config
+      </p>
+      <p class="subtitle">
+        Setup your integrations and preferences.
+      </p>
     </div>
-  <% end %>
+  </section>
+  
+  <div class="content">
 
-  <div>
-    <%= form.label :slack_api_key, style: "display: block" %>
-    <%= form.text_field :slack_api_key %>
-  </div>
+    <%= form_with(model: config) do |form| %>
 
-  <div>
-    <%= form.label :discord_api_key, style: "display: block" %>
-    <%= form.text_field :discord_api_key %>
-  </div>
+      <% if config.errors.any? %>
+        <div class="notification is-danger">
+          <strong><%= pluralize(config.errors.count, "error") %> to be fixed:</strong>
+          <br>
+          <ul>
+            <% config.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <div>
-    <%= form.label :slack_relax_channel, style: "display: block" %>
-    <%= form.text_field :slack_relax_channel %>
-  </div>
+      <h2>Configure Slack integration</h2>
 
-  <div>
-    <%= form.label :discord_relax_channel, style: "display: block" %>
-    <%= form.text_field :discord_relax_channel %>
-  </div>
+      <div class="field">
+        <label class="label">Slack API key</label>
+        <div class="control">
+          <%= form.text_field :slack_api_key, class: "input is-info" %>
+        </div>
+      </div>
 
-  <div>
-    <%= form.label :open_ai_secret, style: "display: block" %>
-    <%= form.text_field :open_ai_secret %>
-  </div>
+      <div class="field">
+        <label class="label">Slack channel name</label>
+        <div class="control">
+          <%= form.text_field :slack_relax_channel, class: "input is-info" %>
+        </div>
+      </div>
 
-  <div>
-    <%= form.label :event_coffee_1_enabled, style: "display: block" %>
-    <%= form.check_box :event_coffee_1_enabled %>
-  </div>
+      <h2>Configure Discord integration</h2>
 
-  <div>
-    <%= form.label :event_coffee_1_time, style: "display: block" %>
-    <%=
-      form.time_field :event_coffee_1_time, value: "%H:%M" %>
-  </div>
+      <div class="field">
+        <label class="label">Discord API key</label>
+        <div class="control">
+          <%= form.text_field :discord_api_key, class: "input is-info" %>
+        </div>
+      </div>
 
-  <div>
-    <%= form.label :event_coffee_2_enabled, style: "display: block" %>
-    <%= form.check_box :event_coffee_2_enabled %>
-  </div>
+      <div class="field">
+        <label class="label">Discord channel name</label>
+        <div class="control">
+          <%= form.text_field :discord_relax_channel, class: "input is-info" %>
+        </div>
+      </div>
 
-  <div>
-    <%= form.label :event_coffee_2_time, style: "display: block" %>
-    <%=
-      form.time_field :event_coffee_2_time, value: "%H:%M" %>
-  </div>
+      <h2>Configure OpenAI integration</h2>
 
-  <div>
-    <%= form.label :event_lunch_enabled, style: "display: block" %>
-    <%= form.check_box :event_lunch_enabled %>
-  </div>
+      <div class="field">
+        <label class="label">OpenAI API key</label>
+        <div class="control">
+          <%= form.text_field :open_ai_secret, class: "input is-info" %>
+        </div>
+      </div>
 
-  <div>
-    <%= form.label :event_lunch_time, style: "display: block" %>
-    <%=
-      form.time_field :event_lunch_time, value: "%H:%M" %>
-  </div>
+      <h2>Configure bot events</h2>
 
-  <div>
-    <%= form.label :event_walk_enabled, style: "display: block" %>
-    <%= form.check_box :event_walk_enabled %>
-  </div>
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <%= form.check_box :event_coffee_1_enabled %> Morning coffee break
+          </label>
+          <%= form.time_field :event_coffee_1_time, value: "%H:%M" %>
+        </div>
+      </div>
 
-  <div>
-    <%= form.label :event_walk_time, style: "display: block" %>
-    <%=
-      form.time_field :event_walk_time, value: "%H:%M" %>
-  </div>
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <%= form.check_box :event_coffee_2_enabled %> Afternoon coffee break
+          </label>
+          <%= form.time_field :event_coffee_2_time, value: "%H:%M" %>
+        </div>
+      </div>
 
-  <div>
-    <%= form.label :event_game_enabled, style: "display: block" %>
-    <%= form.check_box :event_game_enabled %>
-  </div>
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <%= form.check_box :event_lunch_enabled %> Lunch
+          </label>
+          <%= form.time_field :event_lunch_time, value: "%H:%M" %>
+        </div>
+      </div>
 
-  <div>
-    <%= form.label :event_game_time, style: "display: block" %>
-    <%=
-      form.time_field :event_game_time, value: "%H:%M" %>
-  </div>
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <%= form.check_box :event_walk_enabled %> Take a walk
+          </label>
+          <%= form.time_field :event_walk_time, value: "%H:%M" %>
+        </div>
+      </div>
 
-  <div>
-    <%= form.submit %>
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <%= form.check_box :event_game_enabled %> Play some games
+          </label>
+          <%= form.time_field :event_game_time, value: "%H:%M" %>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column has-text-left">
+          <%= link_to "Back", @config, class: "button is-large is-normal" %>
+        </div>
+        <div class="column has-text-right">
+          <%= form.submit 'Save', class: "button is-large is-link" %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
