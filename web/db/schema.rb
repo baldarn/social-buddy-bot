@@ -37,11 +37,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_22_194735) do
     t.boolean "event_lunch_enabled", default: true
     t.boolean "event_walk_enabled", default: true
     t.boolean "event_game_enabled", default: true
-    t.integer "event_coffee_1_time", default: 1000
-    t.integer "event_coffee_2_time", default: 1500
-    t.integer "event_lunch_time", default: 1230
-    t.integer "event_walk_time", default: 1600
-    t.integer "event_game_time", default: 1730
+    t.datetime "event_coffee_1_time", default: "2023-05-23 09:00:00"
+    t.datetime "event_coffee_2_time", default: "2023-05-23 13:00:00"
+    t.datetime "event_lunch_time", default: "2023-05-23 10:30:00"
+    t.datetime "event_walk_time", default: "2023-05-23 14:00:00"
+    t.datetime "event_game_time", default: "2023-05-23 15:30:00"
     t.index ["user_id"], name: "index_configs_on_user_id"
   end
 

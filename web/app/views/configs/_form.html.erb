@@ -43,7 +43,8 @@
 
   <div>
     <%= form.label :event_coffee_1_time, style: "display: block" %>
-    <%= form.text_field :event_coffee_1_time %>
+    <%=
+      form.time_field :event_coffee_1_time, value: "%H:%M" %>
   </div>
 
   <div>
@@ -53,7 +54,8 @@
 
   <div>
     <%= form.label :event_coffee_2_time, style: "display: block" %>
-    <%= form.text_field :event_coffee_2_time %>
+    <%=
+      form.time_field :event_coffee_2_time, value: "%H:%M" %>
   </div>
 
   <div>
@@ -63,7 +65,8 @@
 
   <div>
     <%= form.label :event_lunch_time, style: "display: block" %>
-    <%= form.text_field :event_lunch_time %>
+    <%=
+      form.time_field :event_lunch_time, value: "%H:%M" %>
   </div>
 
   <div>
@@ -73,7 +76,8 @@
 
   <div>
     <%= form.label :event_walk_time, style: "display: block" %>
-    <%= form.text_field :event_walk_time %>
+    <%=
+      form.time_field :event_walk_time, value: "%H:%M" %>
   </div>
 
   <div>
@@ -83,7 +87,8 @@
 
   <div>
     <%= form.label :event_game_time, style: "display: block" %>
-    <%= form.text_field :event_game_time %>
+    <%=
+      form.time_field :event_game_time, value: "%H:%M" %>
   </div>
 
   <div>

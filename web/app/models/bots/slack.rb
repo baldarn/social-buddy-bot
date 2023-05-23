@@ -26,7 +26,7 @@ module Bots
         .select { |m| m.subtype.nil? }
     end
 
-    def propose_event(channel: nil, event:)
+    def propose_event(event:, channel: nil)
       text = get_text(event:)
       text = integrate_text(event:, text:)
       client.chat_postMessage(channel: channel || social_channel, text:, as_user: true)
