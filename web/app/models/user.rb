@@ -31,14 +31,9 @@ class User < ApplicationRecord
 
   def after_create_tasks
     generate_config
-    schedule_job
   end
 
   def generate_config
     Config.create(user: self)
-  end
-
-  def schedule_job
-    SendRemindersJob.perform_at(10.seconds.from_now)
   end
 end
