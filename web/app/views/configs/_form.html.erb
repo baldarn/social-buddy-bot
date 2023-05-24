@@ -26,102 +26,116 @@
         </div>
       <% end %>
 
-      <h2>Configure Slack integration</h2>
+      <section class="section">
+        <h2>Configure Slack integration</h2>
 
-      <div class="field">
-        <label class="label">Slack API key</label>
-        <div class="control">
-          <%= form.text_field :slack_api_key, class: "input is-info" %>
+        <div class="field">
+          <label class="label">Slack API key</label>
+          <div class="control">
+            <%= form.text_field :slack_api_key, class: "input is-info" %>
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label class="label">Slack channel name</label>
-        <div class="control">
-          <%= form.text_field :slack_relax_channel, class: "input is-info" %>
+        <div class="field">
+          <label class="label">Slack channel name</label>
+          <div class="control">
+            <%= form.text_field :slack_relax_channel, class: "input is-info" %>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <h2>Configure Discord integration</h2>
+      <section class="section">
+        <h2>Configure Discord integration</h2>
 
-      <div class="field">
-        <label class="label">Discord API key</label>
-        <div class="control">
-          <%= form.text_field :discord_api_key, class: "input is-info" %>
+        <div class="field">
+          <label class="label">Discord API key</label>
+          <div class="control">
+            <%= form.text_field :discord_api_key, class: "input is-info" %>
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label class="label">Discord channel name</label>
-        <div class="control">
-          <%= form.text_field :discord_relax_channel, class: "input is-info" %>
+        <div class="field">
+          <label class="label">Discord channel name</label>
+          <div class="control">
+            <%= form.text_field :discord_relax_channel, class: "input is-info" %>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <h2>Configure OpenAI integration</h2>
+      <section class="section">
+        <h2>Configure OpenAI integration</h2>
 
-      <div class="field">
-        <label class="label">OpenAI API key</label>
-        <div class="control">
-          <%= form.text_field :open_ai_secret, class: "input is-info" %>
+        <div class="field">
+          <label class="label">OpenAI API key</label>
+          <div class="control">
+            <%= form.text_field :open_ai_secret, class: "input is-info" %>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <h2>Configure bot events</h2>
+      <section class="section">
+        <h2>Configure bot events</h2>
 
-      <div class="field">
-        <div class="control">
-          <label class="checkbox">
-            <%= form.check_box :event_coffee_1_enabled %> Morning coffee break
-          </label>
-          <%= form.time_field :event_coffee_1_time %>
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <%= form.check_box :event_coffee_1_enabled %> Morning coffee break
+            </label>
+            <%= form.time_field :event_coffee_1_time %>
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <div class="control">
-          <label class="checkbox">
-            <%= form.check_box :event_coffee_2_enabled %> Afternoon coffee break
-          </label>
-          <%= form.time_field :event_coffee_2_time %>
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <%= form.check_box :event_coffee_2_enabled %> Afternoon coffee break
+            </label>
+            <%= form.time_field :event_coffee_2_time %>
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <div class="control">
-          <label class="checkbox">
-            <%= form.check_box :event_lunch_enabled %> Lunch
-          </label>
-          <%= form.time_field :event_lunch_time %>
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <%= form.check_box :event_lunch_enabled %> Lunch together
+            </label>
+            <%= form.time_field :event_lunch_time %>
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <div class="control">
-          <label class="checkbox">
-            <%= form.check_box :event_walk_enabled %> Take a walk
-          </label>
-          <%= form.time_field :event_walk_time %>
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <%= form.check_box :event_walk_enabled %> Take a walk
+            </label>
+            <%= form.time_field :event_walk_time %>
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <div class="control">
-          <label class="checkbox">
-            <%= form.check_box :event_game_enabled %> Play some games
-          </label>
-          <%= form.time_field :event_game_time %>
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <%= form.check_box :event_game_enabled %> Play some games
+            </label>
+            <%= form.time_field :event_game_time %>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="columns">
-        <div class="column has-text-left">
-          <%= link_to "Back", @config, class: "button is-large is-normal" %>
+      <nav class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <%= link_to "Back", @config, class: "button is-normal" %>
+          </div>
         </div>
-        <div class="column has-text-right">
-          <%= form.submit 'Save', class: "button is-large is-link" %>
+        <div class="level-right">
+          <div class="level-item">
+            <div class="column has-text-right">
+              <%= form.submit 'Save', class: "button is-primary" %>
+            </div>
+          </div>
         </div>
-      </div>
+      </nav>
     <% end %>
   </div>
 </div>

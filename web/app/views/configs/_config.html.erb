@@ -1,52 +1,89 @@
-<div class="content" id="<%= dom_id config %>">
-  <p>
-    <strong>Slack api key:</strong>
-    <%= config.slack_api_key %>
-  </p>
+<div class="container">
+  <section class="hero">
+    <div class="hero-body">
+      <p class="title">
+        Welcome, <%= @config.user.email %>
+      </p>
+      <p class="subtitle">
+        Here are your settings.
+      </p>
+    </div>
+  </section>
 
-  <p>
-    <strong>Discord api key:</strong>
-    <%= config.discord_api_key %>
-  </p>
+  <div class="content" id="<%= dom_id config %>">
+    <section class="section">
+      <h2>API keys</h2>
+      <p>
+        <strong>Slack api key:</strong>
+        <%= config.slack_api_key %>
+      </p>
 
-  <p>
-    <strong>Slack relax channel:</strong>
-    <%= config.slack_relax_channel %>
-  </p>
+      <p>
+        <strong>Discord api key:</strong>
+        <%= config.discord_api_key %>
+      </p>
 
-  <p>
-    <strong>Discord relax channel:</strong>
-    <%= config.discord_relax_channel %>
-  </p>
+      <p>
+        <strong>Slack relax channel:</strong>
+        <%= config.slack_relax_channel %>
+      </p>
 
-  <p>
-    <strong>Open AI secret:</strong>
-    <%= config.open_ai_secret %>
-  </p>
+      <p>
+        <strong>Discord relax channel:</strong>
+        <%= config.discord_relax_channel %>
+      </p>
 
-  <p>
-    <strong>Event: coffee break 1</strong>
-    <%= config.event_coffee_1_enabled? ? "ENABLED, at #{config.event_coffee_1_time}" : 'DISABLED' %>
-  </p>
+      <p>
+        <strong>Open AI secret:</strong>
+        <%= config.open_ai_secret %>
+      </p>
+    </section>
 
-  <p>
-    <strong>Event: coffee break 2</strong>
-    <%= config.event_coffee_2_enabled? ? "ENABLED, at #{config.event_coffee_2_time}" : 'DISABLED' %>
-  </p>
+    <section class="section">
+      <h2>Bot events</h2>
 
-  <p>
-    <strong>Event: lunch together</strong>
-    <%= config.event_lunch_enabled? ? "ENABLED, at #{config.event_lunch_time}" : 'DISABLED' %>
-  </p>
+      <table class="table">
+        <tbody>
+        <tr>
+          <td><strong>Morning coffee break</strong></td>
+          <td><%= config.event_coffee_1_enabled? ? "<span class=\"tag is-primary is-medium\">enabled</span> at #{config.event_coffee_1_time.strftime('%H:%M')}".html_safe : '<span class="tag is-light is-medium">disabled</span>'.html_safe %></td>
+        </tr>
 
-  <p>
-    <strong>Event: take a walk</strong>
-    <%= config.event_walk_enabled? ? "ENABLED, at #{config.event_walk_time}" : 'DISABLED' %>
-  </p>
+        <tr>
+          <td><strong>Afternoon coffee break</strong></td>
+          <td><%= config.event_coffee_2_enabled? ? "<span class=\"tag is-primary is-medium\">enabled</span> at #{config.event_coffee_2_time.strftime('%H:%M')}".html_safe : '<span class="tag is-light is-medium">disabled</span>'.html_safe %></td>
+        </tr>
 
-  <p>
-    <strong>Event: play vidya</strong>
-    <%= config.event_game_enabled? ? "ENABLED, at #{config.event_game_time}" : 'DISABLED' %>
-  </p>
+        <tr>
+          <td><strong>Lunch together</strong></td>
+          <td><%= config.event_lunch_enabled? ? "<span class=\"tag is-primary is-medium\">enabled</span> at #{config.event_lunch_time.strftime('%H:%M')}".html_safe : '<span class="tag is-light is-medium">disabled</span>'.html_safe %></td>
+        </tr>
 
+        <tr>
+          <td><strong>Take a walk</strong></td>
+          <td><%= config.event_walk_enabled? ? "<span class=\"tag is-primary is-medium\">enabled</span> at #{config.event_walk_time.strftime('%H:%M')}".html_safe : '<span class="tag is-light is-medium">disabled</span>'.html_safe %></td>
+        </tr>
+
+        <tr>
+          <td><strong>Play some games</strong></td>
+          <td><%= config.event_game_enabled? ? "<span class=\"tag is-primary is-medium\">enabled</span> at #{config.event_game_time.strftime('%H:%M')}".html_safe : '<span class="tag is-light is-medium">disabled</span>'.html_safe %></td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <nav class="level">
+      <div class="level-left">
+      </div>
+      <div class="level-right">
+        <div class="level-item">
+          <div class="column has-text-right">
+            <%= link_to "Edit config", '/config/edit', class: "button is-primary" %>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+  </div>
 </div>
+
