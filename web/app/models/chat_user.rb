@@ -8,7 +8,7 @@ class ChatUser < ApplicationRecord
 
   def add_interaction(platform_id:)
     interactions << Interaction.create(chat_type:, platform_id:)
-  rescue StandardError => e
+  rescue StandardError
   end
 
   def count_last_week_interactions
