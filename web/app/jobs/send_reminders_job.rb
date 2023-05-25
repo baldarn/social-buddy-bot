@@ -3,8 +3,7 @@
 class SendRemindersJob < ApplicationJob
   queue_as :default
 
-  def perform(user_id)
-    user = User.find_by_id(user_id)
+  def perform(user, event)
     return unless user
 
     user.slack_bot.propose_event(event:) if user.config.slack_api_key
